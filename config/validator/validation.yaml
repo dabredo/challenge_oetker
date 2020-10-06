@@ -1,0 +1,19 @@
+App\DTO\RecordDTO:
+  properties:
+    title:
+      - NotBlank: ~
+      - Length:
+          max: 255
+    author:
+      - NotBlank: ~
+      - Length:
+          max: 255
+    description:
+      - Length:
+          max: 255
+    price:
+      - NotBlank: ~
+      - Positive: ~
+    releaseDate:
+      - NotBlank: ~
+      - Date: ~
