@@ -27,8 +27,6 @@ services:
       - database
 
   database:
-    # image: mysql:5.7
-    # image: mariadb:latest
     build:
       context: docker/database
     env_file:
