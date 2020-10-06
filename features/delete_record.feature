@@ -3,13 +3,18 @@ Feature:
     As a user
     I want to have an api end point
 
+    Background:
+        Given the following records exist:
+        | title            | author  | releaseDate | price | description                                                             |
+        | The Four Seasons | Vivaldi | 2017-05-17  | 24.00 | Anne-Sophie Mutter (violin)\nWiener Philharmoniker, Herbert von Karajan |
+
     Scenario: Delete a record successfully
         Given the request body is:
         """
         {}
         """
         Given the "Content-Type" request header is "application/json"
-        When I request "/records/55" using HTTP DELETE
+        When I request "/records/1" using HTTP DELETE
         Then the response code is 204
 
     Scenario: Delete a record which does not exist

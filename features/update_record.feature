@@ -3,6 +3,11 @@ Feature:
     As a user
     I want to have an api end point
 
+    Background:
+        Given the following records exist:
+        | title            | author  | releaseDate | price | description                                                             |
+        | The Four Seasons | Vivaldi | 2017-05-17  | 24.00 | Anne-Sophie Mutter (violin)\nWiener Philharmoniker, Herbert von Karajan |
+
     Scenario: Update a record successfully
         Given the request body is:
         """
@@ -11,7 +16,7 @@ Feature:
             "author": "Vivaldi",
             "releaseDate": "2017-05-17",
             "description": "Anne-Sophie Mutter (violin)\nWiener Philharmoniker, Herbert von Karajan",
-            "price": 24.00
+            "price": 10.00
         }
         """
         And the "Content-Type" request header is "application/json"

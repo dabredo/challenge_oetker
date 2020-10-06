@@ -10,3 +10,5 @@ services:
       public: true
       arguments:
         - "@kernel"
+        - "@doctrine.orm.entity_manager"
+        - "@app.repository.record"
