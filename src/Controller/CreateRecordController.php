@@ -15,7 +15,7 @@ use App\Repository\RecordRepository;
 class CreateRecordController extends AbstractController
 {
     private ValidatorInterface $validator;
-    private $recordRepository;
+    private RecordRepository $recordRepository;
 
     public function __construct(
         ValidatorInterface $validator,
