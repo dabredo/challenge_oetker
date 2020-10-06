@@ -18,4 +18,10 @@ class RecordRepository extends ServiceEntityRepository
         $this->_em->persist($record);
         $this->_em->flush();
     }
+
+    public function delete(RecordEntity $record): void
+    {
+        $this->_em->remove($record);
+        $this->_em->flush();
+    }
 }
