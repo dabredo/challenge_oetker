@@ -1,3 +1,6 @@
-#index:
+index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
+
+   path: /records
+   controller: App\Controller\CreateRecordController::run
