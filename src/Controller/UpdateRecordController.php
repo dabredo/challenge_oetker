@@ -12,7 +12,7 @@ use App\DTO\RecordDTO;
 use App\Entity\RecordEntity;
 use App\Repository\RecordRepository;
 
-class CreateRecordController extends AbstractController
+class UpdateRecordController extends AbstractController
 {
     private ValidatorInterface $validator;
     private RecordRepository $recordRepository;
@@ -26,16 +26,20 @@ class CreateRecordController extends AbstractController
     }
 
     /**
-     * Create record for sale
+     * Update record for sale
      *
-     * @Route("/records", methods={"POST"})
+     * @Route("/records/{id}", methods={"PUT"})
      * @SWG\Response(
      *     response=201,
-     *     description="Record created",
+     *     description="Record updated",
      * )
      * @SWG\Response(
      *     response=400,
      *     description="Bad request",
+     * )
+     * @SWG\Response(
+     *     response=404,
+     *     description="Not found",
      * )
      * @SWG\Parameter(
      *     name="record",
@@ -50,15 +54,15 @@ class CreateRecordController extends AbstractController
      *     )
      * )
      */
-    public function run(Request $request): JsonResponse
+    public function run(Request $request, string $id): JsonResponse
     {
+
         $recordDTO = (new RecordDTO())
             ->setTitle($request->request->get('title'))
             ->setAuthor($request->request->get('author'))
             ->setReleaseDate($request->request->get('releaseDate'))
             ->setDescription($request->request->get('description'))
             ->setPrice($request->request->get('price'));
-
 
         $errors = $this->validator->validate($recordDTO);
 
@@ -78,7 +82,12 @@ class CreateRecordController extends AbstractController
             );
         }
 
-        $recordEntity = (new RecordEntity())
+        $recordEntity = $this->recordRepository->find($id);
+        if (!$recordEntity) {
+            throw $this->createNotFoundException();
+        }
+
+        $recordEntity
             ->setTitle($recordDTO->getTitle())
             ->setAuthor($recordDTO->getAuthor())
             ->setReleaseDate(new \DateTime($recordDTO->getReleaseDate()))
@@ -87,6 +96,6 @@ class CreateRecordController extends AbstractController
 
         $this->recordRepository->save($recordEntity);
 
-        return $this->json(null, 201);
+        return $this->json(null, 204);
     }
 }

@@ -13,7 +13,7 @@ class RecordRepository extends ServiceEntityRepository
         parent::__construct($registry, RecordEntity::class);
     }
 
-    public function create(RecordEntity $record): void
+    public function save(RecordEntity $record): void
     {
         $this->_em->persist($record);
         $this->_em->flush();
