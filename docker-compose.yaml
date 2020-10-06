@@ -12,7 +12,6 @@ services:
       - php
 
   php:
-    # image: php:fpm-alpine
     build:
       context: docker/php-fpm
     expose:
