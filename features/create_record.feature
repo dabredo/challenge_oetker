@@ -16,8 +16,8 @@ Feature:
         """
         And the "Content-Type" request header is "application/json"
         When I request "/records" using HTTP POST
-         Then the response code is 201
-         And the response body is an empty JSON object
+        Then the response code is 201
+        And the response body is an empty JSON object
 
     Scenario: Create a record bad request missing title
         Given the request body is:
