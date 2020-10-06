@@ -4,10 +4,8 @@ namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Swagger\Annotations as SWG;
 use Symfony\Component\Routing\Annotation\Route;
-use App\DTO\RecordDTO;
 use App\Entity\RecordEntity;
 use App\Repository\RecordRepository;
 
