@@ -1,0 +1,11 @@
+default:
+    suites:
+        default:
+            contexts:
+                - App\Tests\Behat\ShopContext
+
+    extensions:
+        Imbo\BehatApiExtension:
+            apiClient:
+                base_uri: http://web:80
+        FriendsOfBehat\SymfonyExtension: null
