@@ -24,4 +24,22 @@ class RecordRepository extends ServiceEntityRepository
         $this->_em->remove($record);
         $this->_em->flush();
     }
+
+    public function search(?string $title, ?string $author): array
+    {
+        $searchBy = [];
+        if (!empty($title)) {
+            $searchBy['title'] = $title;
+        }
+        if (!empty($author)) {
+            $searchBy['author'] = $author;
+        }
+
+        $orderBy = [
+            'author' => 'ASC',
+            'title' => 'ASC',
+        ];
+
+        return $this->findBy($searchBy, $orderBy);
+    }
 }
