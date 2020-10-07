@@ -12,18 +12,18 @@ use Symfony\Component\HttpKernel\KernelInterface;
 use Doctrine\ORM\EntityManager;
 use Behat\Gherkin\Node\TableNode;
 use App\Entity\RecordEntity;
-use App\Repository\RecordRepository;
+use App\Repository\RecordRepositoryInterface;
 
 final class ShopContext extends ApiContext implements Context
 {
     private KernelInterface $kernel;
     private EntityManager $em;
-    private RecordRepository $recordRepository;
+    private RecordRepositoryInterface $recordRepository;
 
     public function __construct(
         KernelInterface $kernel,
         EntityManager $em,
-        RecordRepository $recordRepository
+        RecordRepositoryInterface $recordRepository
     ) {
         $this->kernel = $kernel;
         $this->em = $em;

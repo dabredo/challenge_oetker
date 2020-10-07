@@ -6,14 +6,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
-use App\Repository\RecordRepository;
 use Swagger\Annotations as SWG;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\RecordRepositoryInterface;
 
 class SearchRecordController extends AbstractController
 {
-    public function __construct(ValidatorInterface $validator, RecordRepository $recordRepository)
-    {
+    private ValidatorInterface $validator;
+    private RecordRepositoryInterface $recordRepository;
+
+    public function __construct(
+        ValidatorInterface $validator,
+        RecordRepositoryInterface $recordRepository
+    ) {
         $this->validator = $validator;
         $this->recordRepository = $recordRepository;
     }

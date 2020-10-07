@@ -7,14 +7,14 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Swagger\Annotations as SWG;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\RecordEntity;
-use App\Repository\RecordRepository;
+use App\Repository\RecordRepositoryInterface;
 
 class DeleteRecordController extends AbstractController
 {
-    private RecordRepository $recordRepository;
+    private RecordRepositoryInterface $recordRepository;
 
     public function __construct(
-        RecordRepository $recordRepository
+        RecordRepositoryInterface $recordRepository
     ) {
         $this->recordRepository = $recordRepository;
     }

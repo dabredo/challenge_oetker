@@ -10,16 +10,16 @@ use Swagger\Annotations as SWG;
 use Symfony\Component\Routing\Annotation\Route;
 use App\DTO\RecordDTO;
 use App\Entity\RecordEntity;
-use App\Repository\RecordRepository;
+use App\Repository\RecordRepositoryInterface;
 
 class CreateRecordController extends AbstractController
 {
     private ValidatorInterface $validator;
-    private RecordRepository $recordRepository;
+    private RecordRepositoryInterface $recordRepository;
 
     public function __construct(
         ValidatorInterface $validator,
-        RecordRepository $recordRepository
+        RecordRepositoryInterface $recordRepository
     ) {
         $this->validator = $validator;
         $this->recordRepository = $recordRepository;

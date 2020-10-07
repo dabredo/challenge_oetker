@@ -6,7 +6,7 @@ use App\Entity\RecordEntity;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
-class RecordRepository extends ServiceEntityRepository
+class RecordRepository extends ServiceEntityRepository implements RecordRepositoryInterface
 {
     public function __construct(ManagerRegistry $registry)
     {
