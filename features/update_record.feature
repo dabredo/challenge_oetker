@@ -20,8 +20,30 @@ Feature:
         }
         """
         And the "Content-Type" request header is "application/json"
+        And the "api-key" request header is "12345"
         When I request "/records/1" using HTTP PUT
         Then the response code is 204
+
+    Scenario: Update a record without api key
+        Given the request body is:
+        """
+        {
+            "title": "The Four Seasons",
+            "artist": "Vivaldi",
+            "releaseDate": "2017-05-17",
+            "description": "Anne-Sophie Mutter (violin)\nWiener Philharmoniker, Herbert von Karajan",
+            "price": 24.00
+        }
+        """
+        And the "Content-Type" request header is "application/json"
+        When I request "/records/1" using HTTP PUT
+        Then the response code is 401
+        And the response body contains JSON:
+        """
+        {
+             "error": "Unauthorized"
+        }
+        """
 
     Scenario: Update a record which does not exist
         Given the request body is:
@@ -34,11 +56,11 @@ Feature:
             "price": 24.00
         }
         """
-
         And the "Content-Type" request header is "application/json"
+        And the "api-key" request header is "12345"
         When I request "/records/NOT_A_RECORD" using HTTP PUT
         Then the response code is 404
-        Then the response body contains JSON:
+        And the response body contains JSON:
         """
         {
              "error": "Not Found"
@@ -57,9 +79,10 @@ Feature:
         """
 
         And the "Content-Type" request header is "application/json"
+        And the "api-key" request header is "12345"
         When I request "/records/1" using HTTP PUT
         Then the response code is 400
-        Then the response body contains JSON:
+        And the response body contains JSON:
         """
         {
             "errors": [
@@ -83,9 +106,10 @@ Feature:
         }
         """
         And the "Content-Type" request header is "application/json"
+        And the "api-key" request header is "12345"
         When I request "/records/1" using HTTP PUT
         Then the response code is 400
-        Then the response body contains JSON:
+        And the response body contains JSON:
         """
         {
             "errors": [

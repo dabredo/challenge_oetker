@@ -1,7 +1,7 @@
 Feature:
     In order to create a record
-    As a user
-    I want to have an api end point
+    As a admin
+    I want to have a secure api end point
 
     Scenario: Create a record successfully
         Given the request body is:
@@ -15,9 +15,31 @@ Feature:
         }
         """
         And the "Content-Type" request header is "application/json"
+        And the "api-key" request header is "12345"
         When I request "/records" using HTTP POST
         Then the response code is 201
         And the response body is an empty JSON object
+
+    Scenario: Create a record without api key
+        Given the request body is:
+        """
+        {
+            "title": "The Four Seasons",
+            "artist": "Vivaldi",
+            "releaseDate": "2017-05-17",
+            "description": "Anne-Sophie Mutter (violin)\nWiener Philharmoniker, Herbert von Karajan",
+            "price": 24.00
+        }
+        """
+        And the "Content-Type" request header is "application/json"
+        When I request "/records" using HTTP POST
+        Then the response code is 401
+        And the response body contains JSON:
+        """
+        {
+             "error": "Unauthorized"
+        }
+        """
 
     Scenario: Create a record bad request missing title
         Given the request body is:
@@ -31,9 +53,10 @@ Feature:
         """
 
         And the "Content-Type" request header is "application/json"
+        And the "api-key" request header is "12345"
         When I request "/records" using HTTP POST
         Then the response code is 400
-        Then the response body contains JSON:
+        And the response body contains JSON:
         """
         {
             "errors": [
@@ -57,9 +80,10 @@ Feature:
         }
         """
         And the "Content-Type" request header is "application/json"
+        And the "api-key" request header is "12345"
         When I request "/records" using HTTP POST
         Then the response code is 400
-        Then the response body contains JSON:
+        And the response body contains JSON:
         """
         {
             "errors": [

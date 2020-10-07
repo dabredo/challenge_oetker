@@ -11,7 +11,7 @@ use App\DTO\RecordRequestDTO;
 use App\Entity\RecordEntity;
 use App\Repository\RecordRepositoryInterface;
 
-class CreateRecordController extends BaseController
+class CreateRecordController extends BaseController implements AuthenticationRequiredInterface
 {
     private ValidatorInterface $validator;
     private RecordRepositoryInterface $recordRepository;
@@ -36,6 +36,10 @@ class CreateRecordController extends BaseController
      *     response=400,
      *     description="Bad request",
      * )
+     * @SWG\Response(
+     *     response=401,
+     *     description="Unauthorized",
+     * )
      * @SWG\Parameter(
      *     name="record",
      *     in="body",
@@ -45,8 +49,14 @@ class CreateRecordController extends BaseController
      *         @SWG\Property(property="artist", type="string", example="Vivaldi"),
      *         @SWG\Property(property="price", type="number", example=24.00),
      *         @SWG\Property(property="releaseDate", type="string", example="2017-05-19"),
-     *         @SWG\Property(property="description", type="string", example="Anne-Sophie Mutter (violin)\nWiener Philharmoniker, Herbert von Karajan")
+     *         @SWG\Property(property="description", type="string", example="Anne-Sophie Mutter (violin), Wiener Philharmoniker, Herbert von Karajan")
      *     )
+     * )
+     * @SWG\Parameter(
+     *     name="api-key",
+     *     in="header",
+     *     description="Use the valid api-key 12345",
+     *     type="string"
      * )
      */
     public function run(Request $request): JsonResponse

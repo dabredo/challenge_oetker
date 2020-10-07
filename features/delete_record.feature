@@ -13,16 +13,33 @@ Feature:
         """
         {}
         """
-        Given the "Content-Type" request header is "application/json"
+        And the "Content-Type" request header is "application/json"
+        And the "api-key" request header is "12345"
         When I request "/records/1" using HTTP DELETE
         Then the response code is 204
+
+    Scenario: Delete a record without api key
+        Given the request body is:
+        """
+        {}
+        """
+        And the "Content-Type" request header is "application/json"
+        When I request "/records/1" using HTTP DELETE
+        Then the response code is 401
+        And the response body contains JSON:
+        """
+        {
+             "error": "Unauthorized"
+        }
+        """
 
     Scenario: Delete a record which does not exist
         Given the request body is:
         """
         {}
         """
-        Given the "Content-Type" request header is "application/json"
+        And the "Content-Type" request header is "application/json"
+        And the "api-key" request header is "12345"
         When I request "/records/NOT_A_RECORD" using HTTP DELETE
         Then the response code is 404
         And the response body contains JSON:
