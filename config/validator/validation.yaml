@@ -4,7 +4,7 @@ App\DTO\RecordDTO:
       - NotBlank: ~
       - Length:
           max: 255
-    author:
+    artist:
       - NotBlank: ~
       - Length:
           max: 255

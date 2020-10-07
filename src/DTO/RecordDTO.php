@@ -5,7 +5,7 @@ namespace App\DTO;
 class RecordDTO
 {
     private ?string $title;
-    private ?string $author;
+    private ?string $artist;
     private ?string $releaseDate;
     private ?string $price;
     private ?string $description;
@@ -22,14 +22,14 @@ class RecordDTO
         return $this;
     }
 
-    public function getAuthor(): ?string
+    public function getArtist(): ?string
     {
-        return $this->author;
+        return $this->artist;
     }
 
-    public function setAuthor(?string $author): self
+    public function setArtist(?string $artist): self
     {
-        $this->author = $author;
+        $this->artist = $artist;
 
         return $this;
     }

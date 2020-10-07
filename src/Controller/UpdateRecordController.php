@@ -47,7 +47,7 @@ class UpdateRecordController extends AbstractController
      *     description="Record on sale",
      *     @SWG\Schema(
      *         @SWG\Property(property="title", type="string", example="The Four Seasons"),
-     *         @SWG\Property(property="author", type="string", example="Vivaldi"),
+     *         @SWG\Property(property="artist", type="string", example="Vivaldi"),
      *         @SWG\Property(property="price", type="number", example=24.00),
      *         @SWG\Property(property="releaseDate", type="string", example="2017-05-19"),
      *         @SWG\Property(property="description", type="string", example="Anne-Sophie Mutter (violin)\nWiener Philharmoniker, Herbert von Karajan")
@@ -59,7 +59,7 @@ class UpdateRecordController extends AbstractController
 
         $recordDTO = (new RecordDTO())
             ->setTitle($request->request->get('title'))
-            ->setAuthor($request->request->get('author'))
+            ->setArtist($request->request->get('artist'))
             ->setReleaseDate($request->request->get('releaseDate'))
             ->setDescription($request->request->get('description'))
             ->setPrice($request->request->get('price'));
@@ -89,7 +89,7 @@ class UpdateRecordController extends AbstractController
 
         $recordEntity
             ->setTitle($recordDTO->getTitle())
-            ->setAuthor($recordDTO->getAuthor())
+            ->setArtist($recordDTO->getArtist())
             ->setReleaseDate(new \DateTime($recordDTO->getReleaseDate()))
             ->setDescription($recordDTO->getDescription())
             ->setPrice($recordDTO->getPrice());

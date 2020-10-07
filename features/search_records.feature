@@ -5,7 +5,7 @@ Feature:
 
     Background:
         Given the following records exist:
-        | title            | author  | releaseDate | price | description                                                             |
+        | title            | artist  | releaseDate | price | description                                                             |
         | The Four Seasons | Vivaldi | 2017-05-17  | 24.00 | Anne-Sophie Mutter (violin)\nWiener Philharmoniker, Herbert von Karajan |
         | La Traviata      | Verdi   | 2019-11-11  | 27.00 | Marina Rebeka, Charles Castronovo, George Petean, Latvian Festival O... |
         | Otello           | Verdi   | 2014-04-12  | 18.75 | Plácido Domingo (Otello), Renée Fleming (Desdemona), James Morris (I... |
@@ -21,7 +21,7 @@ Feature:
             {
                 "id": 4,
                 "title": "Motets",
-                "author": "Bach",
+                "artist": "Bach",
                 "description": "Yukari Nonoshita & Aki Matsui (soprano), Damien Guillon (counter-ten...",
                 "price": 15.5,
                 "releaseDate": "2010-05-01"
@@ -29,7 +29,7 @@ Feature:
             {
                 "id": 5,
                 "title": "Don Carlos",
-                "author": "Verdi",
+                "artist": "Verdi",
                 "description": "Katia Ricciarelli (Elisabeth), Lucia Valentini Terrani (Eboli), Plác...",
                 "price": 20.25,
                 "releaseDate": "2013-10-12"
@@ -38,7 +38,7 @@ Feature:
             {
                 "id": 2,
                 "title": "La Traviata",
-                "author": "Verdi",
+                "artist": "Verdi",
                 "description": "Marina Rebeka, Charles Castronovo, George Petean, Latvian Festival O...",
                 "price": 27,
                 "releaseDate": "2019-11-11"
@@ -47,7 +47,7 @@ Feature:
             {
                 "id": 3,
                 "title": "Otello",
-                "author": "Verdi",
+                "artist": "Verdi",
                 "description": "Plácido Domingo (Otello), Renée Fleming (Desdemona), James Morris (I...",
                 "price": 18.75,
                 "releaseDate": "2014-04-12"
@@ -55,7 +55,7 @@ Feature:
             {
                 "id": 1,
                 "title": "The Four Seasons",
-                "author": "Vivaldi",
+                "artist": "Vivaldi",
                 "description": "Anne-Sophie Mutter (violin)\\nWiener Philharmoniker, Herbert von Karajan",
                 "price": 24,
                 "releaseDate": "2017-05-17"
@@ -72,22 +72,22 @@ Feature:
             {
                 "id": 4,
                 "title": "Motets",
-                "author": "Bach",
+                "artist": "Bach",
                 "description": "Yukari Nonoshita & Aki Matsui (soprano), Damien Guillon (counter-ten...",
                 "price": 15.5,
                 "releaseDate": "2010-05-01"
             },
         ]
         """
-    Scenario: Search records by author
-        When I request "/records?author=verdi" using HTTP GET
+    Scenario: Search records by artist
+        When I request "/records?artist=verdi" using HTTP GET
         Then the response code is 200
         """
         [
             {
                 "id": 5,
                 "title": "Don Carlos",
-                "author": "Verdi",
+                "artist": "Verdi",
                 "description": "Katia Ricciarelli (Elisabeth), Lucia Valentini Terrani (Eboli), Plác...",
                 "price": 20.25,
                 "releaseDate": "2013-10-12"
@@ -96,7 +96,7 @@ Feature:
             {
                 "id": 2,
                 "title": "La Traviata",
-                "author": "Verdi",
+                "artist": "Verdi",
                 "description": "Marina Rebeka, Charles Castronovo, George Petean, Latvian Festival O...",
                 "price": 27,
                 "releaseDate": "2019-11-11"
@@ -105,7 +105,7 @@ Feature:
             {
                 "id": 3,
                 "title": "Otello",
-                "author": "Verdi",
+                "artist": "Verdi",
                 "description": "Plácido Domingo (Otello), Renée Fleming (Desdemona), James Morris (I...",
                 "price": 18.75,
                 "releaseDate": "2014-04-12"
@@ -113,15 +113,15 @@ Feature:
         ]
         """
 
-    Scenario: Search records by author and title
-        When I request "/records?author=verdi&title=Otello" using HTTP GET
+    Scenario: Search records by artist and title
+        When I request "/records?artist=verdi&title=Otello" using HTTP GET
         Then the response code is 200
         """
         [
             {
                 "id": 5,
                 "title": "Don Carlos",
-                "author": "Verdi",
+                "artist": "Verdi",
                 "description": "Katia Ricciarelli (Elisabeth), Lucia Valentini Terrani (Eboli), Plác...",
                 "price": 20.25,
                 "releaseDate": "2013-10-12"
@@ -130,7 +130,7 @@ Feature:
             {
                 "id": 2,
                 "title": "La Traviata",
-                "author": "Verdi",
+                "artist": "Verdi",
                 "description": "Marina Rebeka, Charles Castronovo, George Petean, Latvian Festival O...",
                 "price": 27,
                 "releaseDate": "2019-11-11"
@@ -139,7 +139,7 @@ Feature:
             {
                 "id": 3,
                 "title": "Otello",
-                "author": "Verdi",
+                "artist": "Verdi",
                 "description": "Plácido Domingo (Otello), Renée Fleming (Desdemona), James Morris (I...",
                 "price": 18.75,
                 "releaseDate": "2014-04-12"

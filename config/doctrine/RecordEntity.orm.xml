@@ -11,7 +11,7 @@
         </id>
 
         <field name="title" column="title" type="string" />
-        <field name="author" column="author" type="string" />
+        <field name="artist" column="artist" type="string" />
         <field name="description" column="description" type="string" />
         <field name="releaseDate" column="release_date" type="date" />
         <field name="price" column="price" type="float" />

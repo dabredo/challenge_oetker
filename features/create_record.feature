@@ -8,7 +8,7 @@ Feature:
         """
         {
             "title": "The Four Seasons",
-            "author": "Vivaldi",
+            "artist": "Vivaldi",
             "releaseDate": "2017-05-17",
             "description": "Anne-Sophie Mutter (violin)\nWiener Philharmoniker, Herbert von Karajan",
             "price": 24.00
@@ -23,7 +23,7 @@ Feature:
         Given the request body is:
         """
         {
-            "author": "Vivaldi",
+            "artist": "Vivaldi",
             "releaseDate": "2017-05-17",
             "description": "Anne-Sophie Mutter (violin)\nWiener Philharmoniker, Herbert von Karajan",
             "price": 24.00
@@ -50,7 +50,7 @@ Feature:
         """
         {
             "title": "",
-            "author": "",
+            "artist": "",
             "releaseDate": "NOT_A_DATE",
             "description": "",
             "price": "NOT_A_PRICE"
@@ -68,7 +68,7 @@ Feature:
                     "message": "This value should not be blank."
                 },
                 {
-                    "title": "author",
+                    "title": "artist",
                     "message": "This value should not be blank."
                 },
                 {

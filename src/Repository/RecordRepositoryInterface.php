@@ -10,5 +10,5 @@ interface RecordRepositoryInterface
 
     public function delete(RecordEntity $record);
 
-    public function search(?string $title, ?string $author);
+    public function search(?string $title, ?string $artist);
 }

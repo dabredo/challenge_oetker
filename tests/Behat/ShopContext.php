@@ -47,7 +47,7 @@ final class ShopContext extends ApiContext implements Context
         foreach ($table as $row) {
             $recordEntity = (new RecordEntity())
                 ->setTitle($row['title'])
-                ->setAuthor($row['author'])
+                ->setArtist($row['artist'])
                 ->setReleaseDate(new \DateTime($row['releaseDate']))
                 ->setPrice((float) $row['price'])
                 ->setDescription($row['description']);

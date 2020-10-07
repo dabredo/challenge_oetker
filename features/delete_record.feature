@@ -5,7 +5,7 @@ Feature:
 
     Background:
         Given the following records exist:
-        | title            | author  | releaseDate | price | description                                                             |
+        | title            | artist  | releaseDate | price | description                                                             |
         | The Four Seasons | Vivaldi | 2017-05-17  | 24.00 | Anne-Sophie Mutter (violin)\nWiener Philharmoniker, Herbert von Karajan |
 
     Scenario: Delete a record successfully

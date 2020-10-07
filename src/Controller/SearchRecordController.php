@@ -42,25 +42,25 @@ class SearchRecordController extends AbstractController
      *     type="string"
      * )
      * @SWG\Parameter(
-     *     name="author",
+     *     name="artist",
      *     in="query",
-     *     description="Field to search by author",
+     *     description="Field to search by artist",
      *     type="string"
      * )
      */
     public function run(Request $request): JsonResponse
     {
         $title = $request->query->get('title');
-        $author = $request->query->get('author');
+        $artist = $request->query->get('artist');
 
-        $result = $this->recordRepository->search($title, $author);
+        $result = $this->recordRepository->search($title, $artist);
 
         $response = [];
         foreach ($result as $r) {
             $response[] = [
                 'id' => $r->getId(),
                 'title' => $r->getTitle(),
-                'author' => $r->getAuthor(),
+                'artist' => $r->getArtist(),
                 'description' => $r->getDescription(),
                 'price' => $r->getPrice(),
                 'releaseDate' => $r->getReleaseDate()->format('Y-m-d'),

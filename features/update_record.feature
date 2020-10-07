@@ -5,7 +5,7 @@ Feature:
 
     Background:
         Given the following records exist:
-        | title            | author  | releaseDate | price | description                                                             |
+        | title            | artist  | releaseDate | price | description                                                             |
         | The Four Seasons | Vivaldi | 2017-05-17  | 24.00 | Anne-Sophie Mutter (violin)\nWiener Philharmoniker, Herbert von Karajan |
 
     Scenario: Update a record successfully
@@ -13,7 +13,7 @@ Feature:
         """
         {
             "title": "The Four Seasons",
-            "author": "Vivaldi",
+            "artist": "Vivaldi",
             "releaseDate": "2017-05-17",
             "description": "Anne-Sophie Mutter (violin)\nWiener Philharmoniker, Herbert von Karajan",
             "price": 10.00
@@ -28,7 +28,7 @@ Feature:
         """
         {
             "title": "The Four Seasons",
-            "author": "Vivaldi",
+            "artist": "Vivaldi",
             "releaseDate": "2017-05-17",
             "description": "Anne-Sophie Mutter (violin)\nWiener Philharmoniker, Herbert von Karajan",
             "price": 24.00
@@ -49,7 +49,7 @@ Feature:
         Given the request body is:
         """
         {
-            "author": "Vivaldi",
+            "artist": "Vivaldi",
             "releaseDate": "2017-05-17",
             "description": "Anne-Sophie Mutter (violin)\nWiener Philharmoniker, Herbert von Karajan",
             "price": 24.00
@@ -76,7 +76,7 @@ Feature:
         """
         {
             "title": "",
-            "author": "",
+            "artist": "",
             "releaseDate": "NOT_A_DATE",
             "description": "",
             "price": "NOT_A_PRICE"
@@ -94,7 +94,7 @@ Feature:
                     "message": "This value should not be blank."
                 },
                 {
-                    "title": "author",
+                    "title": "artist",
                     "message": "This value should not be blank."
                 },
                 {

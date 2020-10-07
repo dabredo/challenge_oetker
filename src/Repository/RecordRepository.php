@@ -25,18 +25,18 @@ class RecordRepository extends ServiceEntityRepository implements RecordReposito
         $this->_em->flush();
     }
 
-    public function search(?string $title, ?string $author): array
+    public function search(?string $title, ?string $artist): array
     {
         $searchBy = [];
         if (!empty($title)) {
             $searchBy['title'] = $title;
         }
-        if (!empty($author)) {
-            $searchBy['author'] = $author;
+        if (!empty($artist)) {
+            $searchBy['artist'] = $artist;
         }
 
         $orderBy = [
-            'author' => 'ASC',
+            'artist' => 'ASC',
             'title' => 'ASC',
         ];
 
