@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
@@ -12,7 +11,7 @@ use App\DTO\RecordDTO;
 use App\Entity\RecordEntity;
 use App\Repository\RecordRepositoryInterface;
 
-class CreateRecordController extends AbstractController
+class CreateRecordController extends BaseController
 {
     private ValidatorInterface $validator;
     private RecordRepositoryInterface $recordRepository;
@@ -59,23 +58,10 @@ class CreateRecordController extends AbstractController
             ->setDescription($request->request->get('description'))
             ->setPrice($request->request->get('price'));
 
-
         $errors = $this->validator->validate($recordDTO);
 
         if ($errors->count() > 0) {
-            $errorsResponse = [];
-
-            foreach ($errors as $error) {
-                $errorsResponse[] = [
-                    'title' => $error->getPropertyPath(),
-                    'message' => $error->getMessage(),
-                ];
-            }
-
-            return $this->json(
-                [ 'errors' => $errorsResponse ],
-                JsonResponse::HTTP_BAD_REQUEST
-            );
+            return $this->createErrorsResponse($errors);
         }
 
         $recordEntity = (new RecordEntity())
