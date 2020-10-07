@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Swagger\Annotations as SWG;
 use Symfony\Component\Routing\Annotation\Route;
-use App\DTO\RecordDTO;
+use App\DTO\RecordRequestDTO;
 use App\Entity\RecordEntity;
 use App\Repository\RecordRepositoryInterface;
 
@@ -51,27 +51,26 @@ class CreateRecordController extends BaseController
      */
     public function run(Request $request): JsonResponse
     {
-        $recordDTO = (new RecordDTO())
+        $recordRequest = (new RecordRequestDTO())
             ->setTitle($request->request->get('title'))
             ->setArtist($request->request->get('artist'))
             ->setReleaseDate($request->request->get('releaseDate'))
             ->setDescription($request->request->get('description'))
             ->setPrice($request->request->get('price'));
 
-        $errors = $this->validator->validate($recordDTO);
-
+        $errors = $this->validator->validate($recordRequest);
         if ($errors->count() > 0) {
             return $this->createErrorsResponse($errors);
         }
 
-        $recordEntity = (new RecordEntity())
-            ->setTitle($recordDTO->getTitle())
-            ->setArtist($recordDTO->getArtist())
-            ->setReleaseDate(new \DateTime($recordDTO->getReleaseDate()))
-            ->setDescription($recordDTO->getDescription())
-            ->setPrice($recordDTO->getPrice());
+        $record = (new RecordEntity())
+            ->setTitle($recordRequest->getTitle())
+            ->setArtist($recordRequest->getArtist())
+            ->setReleaseDate(new \DateTime($recordRequest->getReleaseDate()))
+            ->setDescription($recordRequest->getDescription())
+            ->setPrice($recordRequest->getPrice());
 
-        $this->recordRepository->save($recordEntity);
+        $this->recordRepository->save($record);
 
         return $this->json(null, JsonResponse::HTTP_CREATED);
     }

@@ -34,12 +34,12 @@ class DeleteRecordController extends AbstractController
      */
     public function run(string $id): JsonResponse
     {
-        $recordEntity = $this->recordRepository->find($id);
-        if (!$recordEntity) {
+        $record = $this->recordRepository->find($id);
+        if (!$record) {
             throw $this->createNotFoundException();
         }
 
-        $this->recordRepository->delete($recordEntity);
+        $this->recordRepository->delete($record);
 
         return $this->json(null, JsonResponse::HTTP_NO_CONTENT);
     }

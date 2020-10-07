@@ -1,4 +1,4 @@
-App\DTO\RecordDTO:
+App\DTO\RecordRequestDTO:
   properties:
     title:
       - NotBlank: ~

@@ -2,7 +2,7 @@
 
 namespace App\DTO;
 
-class RecordDTO
+class RecordRequestDTO
 {
     private ?string $title;
     private ?string $artist;
