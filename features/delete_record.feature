@@ -1,7 +1,7 @@
 Feature:
     In order to delete a record
-    As a user
-    I want to have an api end point
+    As a admin
+    I want to have a secure api end point
 
     Background:
         Given the following records exist:
