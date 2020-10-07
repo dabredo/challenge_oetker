@@ -21,7 +21,10 @@ class ExceptionSubscriber implements EventSubscriberInterface
     {
         $exception = $event->getThrowable();
 
-        $response = new JsonResponse([ 'error' => 'Internal error' ], 500);
+        $response = new JsonResponse(
+            [ 'error' => 'Internal error' ],
+            JsonResponse::HTTP_INTERNAL_SERVER_ERROR
+        );
 
         if ($exception instanceof HttpExceptionInterface) {
             $response = new JsonResponse(

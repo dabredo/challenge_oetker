@@ -87,6 +87,6 @@ class CreateRecordController extends AbstractController
 
         $this->recordRepository->save($recordEntity);
 
-        return $this->json(null, 201);
+        return $this->json(null, JsonResponse::HTTP_CREATED);
     }
 }

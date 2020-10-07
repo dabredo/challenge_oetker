@@ -41,6 +41,6 @@ class DeleteRecordController extends AbstractController
 
         $this->recordRepository->delete($recordEntity);
 
-        return $this->json(null, 204);
+        return $this->json(null, JsonResponse::HTTP_NO_CONTENT);
     }
 }
