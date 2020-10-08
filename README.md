@@ -7,8 +7,8 @@
 * src/Entity: Entity record
 * src/Repository: Repository record
 * src/EventSubscribers:
-*** ExceptionSubscriber: Handle errors
-*** RequestSubscriber: Handle authentication and request
+ * ExceptionSubscriber: Handle errors
+ * RequestSubscriber: Handle authentication and request
 
 ### How to run
 Run container:
