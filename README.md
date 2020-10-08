@@ -22,7 +22,7 @@ Run container:
 * docker-compose build
 * docker-compose up
 
-Install dependecies:
+Install dependencies:
 * docker exec -it challenge_oetker_php_1 composer install
 
 Run migrations
