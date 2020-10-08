@@ -11,7 +11,7 @@ use App\Controller\AuthenticationRequiredInterface;
 
 class RequestSubscriber implements EventSubscriberInterface
 {
-    // TODO: Move to secure place
+    // TODO: Move to secure place and use Authentication component
     private const API_KEY = '12345';
 
     public function onKernelController(ControllerEvent $event): void
