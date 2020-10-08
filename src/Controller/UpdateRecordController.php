@@ -77,7 +77,7 @@ class UpdateRecordController extends BaseController implements AuthenticationReq
             return $this->createErrorsResponse($errors);
         }
 
-        $record = $this->recordRepository->find($id);
+        $record = $this->recordRepository->getOne($id);
         if (!$record) {
             throw $this->createNotFoundException();
         }

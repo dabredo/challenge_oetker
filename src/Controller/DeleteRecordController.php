@@ -44,7 +44,7 @@ class DeleteRecordController extends AbstractController implements Authenticatio
      */
     public function run(string $id): JsonResponse
     {
-        $record = $this->recordRepository->find($id);
+        $record = $this->recordRepository->getOne($id);
         if (!$record) {
             throw $this->createNotFoundException();
         }

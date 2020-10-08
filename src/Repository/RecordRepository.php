@@ -42,4 +42,9 @@ class RecordRepository extends ServiceEntityRepository implements RecordReposito
 
         return $this->findBy($searchBy, $orderBy);
     }
+
+    public function getOne($id): ?RecordEntity
+    {
+        return $this->find($id);
+    }
 }
