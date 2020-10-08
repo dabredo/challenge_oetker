@@ -13,7 +13,7 @@
 ### How to run
 Run container:
 * docker-compose build
-* docker-compose up (sometimes it fails and I needed to run it twice)
+* docker-compose up
 
 Install dependecies:
 * docker exec -it challenge_oetker_php_1 composer install
